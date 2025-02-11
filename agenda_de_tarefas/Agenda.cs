@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 namespace Agenda
 {
     public class Tarefas{
@@ -12,5 +13,8 @@ namespace Agenda
         public void Concluir(){
             Status = true;
         }
+    }
+    public class GerenciarTarefas{
+        
     }
 }
