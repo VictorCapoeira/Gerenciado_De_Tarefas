@@ -22,6 +22,7 @@ namespace Agenda
             LayoutWrite.Amarelo("Nome da tarefa: ");
             nome = Console.ReadLine();
             tarefas.Add(new Tarefa(IdCount, nome));
+            LayoutWrite.Verde("Tarefa adicionada!");
             IdCount++;
             
         }
@@ -37,10 +38,19 @@ namespace Agenda
                         LayoutWriteLine.Cinza("[x]");
                     else
                         LayoutWriteLine.Cinza("[ ]");
-                    
                     LayoutLinha.Meia();
                 }
             }
+        }
+        public void RemoverTarefa(int i){
+            LayoutWrite.Amarelo("Insira o ID: ");
+            i = int.Parse(Console.ReadLine());
+            Tarefa tarefa = tarefas.Find(t => t.Id == i);
+            if(tarefa != null){
+                tarefas.Remove(tarefa);
+                LayoutWrite.Verde("Tarefa removida!");
+            }else
+                LayoutWrite.Vermelho("Tarefa não encontrada!");
         }
     }
 }
