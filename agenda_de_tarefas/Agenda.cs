@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Layout_console;
 namespace Agenda
 {
     public class Tarefa{
@@ -16,5 +17,12 @@ namespace Agenda
     }
     public class GerenciarTarefas{
         private List<Tarefa> tarefas = new List<Tarefa>();
+        private int IdCount = 1;
+        public void AdicionarTarefa(string nome){
+            LayoutWrite.Amarelo("Nome da tarefa: ");
+            nome = Console.ReadLine();
+            tarefas.Add(new Tarefa(IdCount, nome));
+            IdCount++;
+        }
     }
 }
