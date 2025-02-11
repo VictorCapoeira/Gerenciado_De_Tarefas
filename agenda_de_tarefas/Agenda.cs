@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 namespace Agenda
 {
-    public class Tarefas{
+    public class Tarefa{
         public int Id {get; set;}
         public string Nome {get; set;}
         public bool Status {get; set;}
-        public Tarefas(int i, string n){
+        public Tarefa(int i, string n){
             Id = i;
             Nome = n;
             Status = false;
@@ -15,6 +15,6 @@ namespace Agenda
         }
     }
     public class GerenciarTarefas{
-        
+        private List<Tarefa> tarefas = new List<Tarefa>();
     }
 }
