@@ -9,5 +9,8 @@ namespace Agenda
             Nome = n;
             Status = false;
         }
+        public void Concluir(){
+            Status = true;
+        }
     }
 }
