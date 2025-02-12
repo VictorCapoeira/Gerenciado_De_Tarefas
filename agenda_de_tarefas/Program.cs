@@ -2,11 +2,13 @@
 using Agenda;
 using Layout;
 using Layout_console;
+Console.Clear();
 
 GerenciarTarefas tarefas = new GerenciarTarefas();
 int escolha = 0;
 do
 {
+Return1:
     LayoutGerenciador.ExibirCabecalho("gerenciador de tarefas", true);
     Console.WriteLine("\t1 - Adicionar Tarefa");
     Console.WriteLine("\t2 - Listar Tarefas");
@@ -14,41 +16,47 @@ do
     Console.WriteLine("\t4 - Remover Tarefa");
     Console.WriteLine("\t0 - Sair");
     LayoutWrite.Amarelo("\tEscolha uma opção: ");
-    if(!int.TryParse(Console.ReadLine(), out escolha)){
+    if (!int.TryParse(Console.ReadLine(), out escolha))
+    {
         LayoutWriteLine.Vermelho("\tInsira um valor válido! Digite para continuar...");
         Console.ReadKey();
         Console.Clear();
-    }else{
-        switch(escolha){
+        goto Return1;
+    }
+    else
+    {
+        switch (escolha)
+        {
             case 1:
                 Console.Clear();
                 tarefas.AdicionarTarefa();
-            break;
+                break;
             case 2:
                 Console.Clear();
                 tarefas.ListarTarefas();
-            break;
+                break;
             case 3:
                 Console.Clear();
                 tarefas.ListarTarefas();
                 tarefas.ConcluirTarefa();
                 Console.Clear();
                 tarefas.ListarTarefas();
-            break;
+                break;
             case 4:
                 Console.Clear();
                 tarefas.ListarTarefas();
                 tarefas.RemoverTarefa();
                 Console.Clear();
                 tarefas.ListarTarefas();
-            break;
+                break;
             case 0:
+                Console.Clear();
                 LayoutWrite.Amarelo("\tPrograma encerrado!");
-            break;
+                break;
             default:
                 Console.Clear();
                 LayoutWrite.Vermelho("\tAção inválida!");
-            break;
+                break;
         }
     }
 } while (escolha != 0);
