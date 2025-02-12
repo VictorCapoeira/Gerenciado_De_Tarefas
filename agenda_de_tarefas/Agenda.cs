@@ -45,9 +45,9 @@ namespace Agenda
             }else
                 LayoutWrite.Vermelho("Tarefa não encontrada!");
         }
-        public void RemoverTarefa(int i){
+        public void RemoverTarefa(){
             LayoutWrite.Amarelo("Insira o ID: ");
-            i = int.Parse(Console.ReadLine());
+            int i = int.Parse(Console.ReadLine());
             Tarefa tarefa = tarefas.Find(t => t.Id == i);
             if(tarefa != null){
                 tarefas.Remove(tarefa);
