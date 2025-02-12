@@ -19,41 +19,41 @@ namespace Agenda
         private List<Tarefa> tarefas = new List<Tarefa>();
         private int IdCount = 1;
         public void AdicionarTarefa(){
-            LayoutWrite.Amarelo("Nome da tarefa: ");
+            LayoutWrite.Amarelo("\n\tNome da tarefa: ");
             string nome = Console.ReadLine();
             tarefas.Add(new Tarefa(IdCount, nome));
-            LayoutWrite.Verde("Tarefa adicionada!");
+            LayoutWriteLine.Verde("\tTarefa adicionada!");
             IdCount++;
             
         }
         public void ListarTarefas(){
             if(tarefas.Count == 0)
-                LayoutWrite.Vermelho("Não há tarefas!");
+                LayoutWrite.Vermelho("\tNão há tarefas!");
             else{
-                LayoutWriteLine.Amarelo("Lista de Tarefas: ");
+                LayoutWriteLine.Amarelo("\n\tLista de Tarefas: ");
                 foreach( var tarefa in tarefas){
-                    LayoutWriteLine.Cinza($"[{(tarefa.Status ? "X" : " ")}] ID: {tarefa.Id.ToString()} - {tarefa.Nome}");
+                    LayoutWriteLine.Cinza($"\t[{(tarefa.Status ? "X" : " ")}] ID: {tarefa.Id.ToString()} - {tarefa.Nome}");
                 }
             }
         }
         public void ConcluirTarefa(){
-            LayoutWrite.Amarelo("Insira o ID: ");
+            LayoutWrite.Amarelo("\tInsira o ID: ");
             int i = int.Parse(Console.ReadLine());
             Tarefa tarefa = tarefas.Find(t => t.Id == i);
             if(tarefa != null){
                 tarefa.Concluir();
             }else
-                LayoutWrite.Vermelho("Tarefa não encontrada!");
+                LayoutWrite.Vermelho("\tTarefa não encontrada!");
         }
         public void RemoverTarefa(){
-            LayoutWrite.Amarelo("Insira o ID: ");
+            LayoutWrite.Amarelo("\tInsira o ID: ");
             int i = int.Parse(Console.ReadLine());
             Tarefa tarefa = tarefas.Find(t => t.Id == i);
             if(tarefa != null){
                 tarefas.Remove(tarefa);
-                LayoutWrite.Verde("Tarefa removida!");
+                LayoutWrite.Verde("\tTarefa removida!");
             }else
-                LayoutWrite.Vermelho("Tarefa não encontrada!");
+                LayoutWrite.Vermelho("\tTarefa não encontrada!");
         }
     }
 }
