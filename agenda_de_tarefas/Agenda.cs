@@ -32,7 +32,7 @@ namespace Agenda
             else{
                 LayoutWriteLine.Amarelo("Lista de Tarefas: ");
                 foreach( var tarefa in tarefas){
-                    LayoutWriteLine.Cinza($"[{(tarefa.Status ? "X" : " ")}] ID: {tarefa.Id.ToString()} - {tarefa.Nome}");
+                    LayoutWriteLine.Cinza($"[\t{(tarefa.Status ? "X" : " ")}] ID: {tarefa.Id.ToString()} - {tarefa.Nome}");
                 }
             }
         }
