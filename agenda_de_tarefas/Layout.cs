@@ -3,14 +3,6 @@ namespace Layout
 {
     public class LayoutGerenciador
     {
-
-        public static void Centralizar(string texto)
-        {
-            int largura = Console.WindowWidth;
-            int altura = Console.WindowHeight;
-            Console.SetCursorPosition((largura - texto.Length) / 2, altura / 2);
-            Console.Write(texto);
-        }
         public static void ExibirCabecalho(string titulo, Boolean estado = false)
         {
             if (estado)
