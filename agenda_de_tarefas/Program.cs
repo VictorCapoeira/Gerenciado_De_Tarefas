@@ -28,6 +28,11 @@ do
                 Console.Clear();
                 tarefas.ListarTarefas();
             break;
+            case 3:
+                Console.Clear();
+                tarefas.ListarTarefas();
+                tarefas.ConcluirTarefa();
+            break;
 
         }
     }
