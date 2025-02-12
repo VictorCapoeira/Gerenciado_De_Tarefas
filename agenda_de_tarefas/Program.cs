@@ -3,7 +3,7 @@ using Agenda;
 using Layout;
 using Layout_console;
 
-
+GerenciarTarefas tarefas = new GerenciarTarefas();
 int escolha = 0;
 do
 {
@@ -22,8 +22,9 @@ do
         switch(escolha){
             case 1:
                 Console.Clear();
-
+                tarefas.AdicionarTarefa();
             break;
+            
         }
     }
 } while (escolha != 0);
