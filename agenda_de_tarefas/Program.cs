@@ -4,4 +4,5 @@ using Layout;
 using Layout_console;
 
 
-LayoutGerenciador.ExibirCabecalho("gerenciador de tarefas");
+
+LayoutGerenciador.ExibirCabecalho("gerenciador de tarefas", true);
