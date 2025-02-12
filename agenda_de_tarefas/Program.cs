@@ -41,6 +41,10 @@ do
             case 5:
                 LayoutWrite.Amarelo("Programa encerrado!");
             break;
+            default:
+                Console.Clear();
+                LayoutWrite.Vermelho("Ação inválida!");
+            break;
 
         }
     }
