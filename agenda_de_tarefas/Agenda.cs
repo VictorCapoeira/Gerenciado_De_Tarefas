@@ -36,9 +36,9 @@ namespace Agenda
                 }
             }
         }
-        public void ConcluirTarefa(int i){
+        public void ConcluirTarefa(){
             LayoutWrite.Amarelo("Insira o ID: ");
-            i = int.Parse(Console.ReadLine());
+            int i = int.Parse(Console.ReadLine());
             Tarefa tarefa = tarefas.Find(t => t.Id == i);
             if(tarefa != null){
                 tarefa.Concluir();
