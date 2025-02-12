@@ -8,14 +8,14 @@ int escolha = 0;
 do
 {
     LayoutGerenciador.ExibirCabecalho("gerenciador de tarefas", true);
-    Console.WriteLine("1 - Adicionar Tarefa");
-    Console.WriteLine("2 - Listar Tarefas");
-    Console.WriteLine("3 - Concluir Tarefa");
-    Console.WriteLine("4 - Remover Tarefa");
-    Console.WriteLine("0 - Sair");
-    LayoutWrite.Amarelo("Escolha uma opção: ");
+    Console.WriteLine("\t1 - Adicionar Tarefa");
+    Console.WriteLine("\t2 - Listar Tarefas");
+    Console.WriteLine("\t3 - Concluir Tarefa");
+    Console.WriteLine("\t4 - Remover Tarefa");
+    Console.WriteLine("\t0 - Sair");
+    LayoutWrite.Amarelo("\tEscolha uma opção: ");
     if(!int.TryParse(Console.ReadLine(), out escolha)){
-        LayoutWriteLine.Vermelho("Insira um valor válido! Digite para continuar...");
+        LayoutWriteLine.Vermelho("\tInsira um valor válido! Digite para continuar...");
         Console.ReadKey();
         Console.Clear();
     }else{
@@ -39,13 +39,12 @@ do
                 tarefas.RemoverTarefa();
             break;
             case 5:
-                LayoutWrite.Amarelo("Programa encerrado!");
+                LayoutWrite.Amarelo("\tPrograma encerrado!");
             break;
             default:
                 Console.Clear();
-                LayoutWrite.Vermelho("Ação inválida!");
+                LayoutWrite.Vermelho("\tAção inválida!");
             break;
-
         }
     }
 } while (escolha != 0);
