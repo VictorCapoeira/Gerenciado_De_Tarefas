@@ -24,7 +24,11 @@ do
                 Console.Clear();
                 tarefas.AdicionarTarefa();
             break;
-            
+            case 2:
+                Console.Clear();
+                tarefas.ListarTarefas();
+            break;
+
         }
     }
 } while (escolha != 0);
