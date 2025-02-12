@@ -51,7 +51,7 @@ Return1:
                 break;
             case 0:
                 Console.Clear();
-                LayoutWrite.Amarelo("\tPrograma encerrado!");
+                LayoutWrite.Amarelo("\n\tPrograma encerrado!");
                 break;
             default:
                 Console.Clear();

@@ -42,6 +42,9 @@ namespace Agenda
             Tarefa tarefa = tarefas.Find(t => t.Id == i);
             if(tarefa != null){
                 tarefa.Concluir();
+                LayoutWrite.Verde($"\tTarefa {tarefa.Id} Concluida! Digite para continuar...");
+                Console.ReadKey();
+                
             }else
                 LayoutWrite.Vermelho("\tTarefa não encontrada!");
         }
@@ -51,7 +54,8 @@ namespace Agenda
             Tarefa tarefa = tarefas.Find(t => t.Id == i);
             if(tarefa != null){
                 tarefas.Remove(tarefa);
-                LayoutWrite.Verde("\tTarefa removida!");
+                LayoutWrite.Verde($"\tTarefa {tarefa.Id} removida! Digite para continuar...");
+                Console.ReadKey();
             }else
                 LayoutWrite.Vermelho("\tTarefa não encontrada!");
         }
