@@ -22,7 +22,7 @@ namespace Agenda
             LayoutWrite.Amarelo("Nome da tarefa: ");
             string nome = Console.ReadLine();
             tarefas.Add(new Tarefa(IdCount, nome));
-            LayoutWrite.Verde("Tarefa adicionada!");
+            LayoutWriteLine.Verde("Tarefa adicionada!");
             IdCount++;
             
         }
