@@ -42,6 +42,15 @@ namespace Agenda
                 }
             }
         }
+        public void ConcluirTarefa(int i){
+            LayoutWrite.Amarelo("Insira o ID: ");
+            i = int.Parse(Console.ReadLine());
+            Tarefa tarefa = tarefas.Find(t => t.Id == i);
+            if(tarefa != null){
+                tarefa.Concluir();
+            }else
+                LayoutWrite.Vermelho("Tarefa não encontrada!");
+        }
         public void RemoverTarefa(int i){
             LayoutWrite.Amarelo("Insira o ID: ");
             i = int.Parse(Console.ReadLine());
