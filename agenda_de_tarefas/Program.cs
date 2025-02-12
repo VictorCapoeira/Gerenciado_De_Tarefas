@@ -32,11 +32,13 @@ do
                 Console.Clear();
                 tarefas.ListarTarefas();
                 tarefas.ConcluirTarefa();
+                tarefas.ListarTarefas();
             break;
             case 4:
                 Console.Clear();
                 tarefas.ListarTarefas();
                 tarefas.RemoverTarefa();
+                tarefas.ListarTarefas();
             break;
             case 5:
                 LayoutWrite.Amarelo("\tPrograma encerrado!");
