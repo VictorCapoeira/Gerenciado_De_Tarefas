@@ -38,6 +38,9 @@ do
                 tarefas.ListarTarefas();
                 tarefas.RemoverTarefa();
             break;
+            case 5:
+                LayoutWrite.Amarelo("Programa encerrado!");
+            break;
 
         }
     }
