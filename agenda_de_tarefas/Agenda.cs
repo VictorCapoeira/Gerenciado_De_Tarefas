@@ -32,28 +32,22 @@ namespace Agenda
             else{
                 LayoutWriteLine.Amarelo("Lista de Tarefas: ");
                 foreach( var tarefa in tarefas){
-                    LayoutWriteLine.Cinza("ID: " + tarefa.Id.ToString());
-                    LayoutWriteLine.Cinza(tarefa.Nome);
-                    if(tarefa.Status)
-                        LayoutWriteLine.Cinza("[x]");
-                    else
-                        LayoutWriteLine.Cinza("[ ]");
-                    LayoutLinha.Meia();
+                    LayoutWriteLine.Cinza($"[{(tarefa.Status ? "X" : " ")}] ID: {tarefa.Id.ToString()} - {tarefa.Nome}");
                 }
             }
         }
-        public void ConcluirTarefa(int i){
+        public void ConcluirTarefa(){
             LayoutWrite.Amarelo("Insira o ID: ");
-            i = int.Parse(Console.ReadLine());
+            int i = int.Parse(Console.ReadLine());
             Tarefa tarefa = tarefas.Find(t => t.Id == i);
             if(tarefa != null){
                 tarefa.Concluir();
             }else
                 LayoutWrite.Vermelho("Tarefa não encontrada!");
         }
-        public void RemoverTarefa(int i){
+        public void RemoverTarefa(){
             LayoutWrite.Amarelo("Insira o ID: ");
-            i = int.Parse(Console.ReadLine());
+            int i = int.Parse(Console.ReadLine());
             Tarefa tarefa = tarefas.Find(t => t.Id == i);
             if(tarefa != null){
                 tarefas.Remove(tarefa);
