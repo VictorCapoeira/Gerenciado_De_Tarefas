@@ -4,5 +4,26 @@ using Layout;
 using Layout_console;
 
 
+int escolha = 0;
+do
+{
+    LayoutGerenciador.ExibirCabecalho("gerenciador de tarefas", true);
+    Console.WriteLine("1 - Adicionar Tarefa");
+    Console.WriteLine("2 - Listar Tarefas");
+    Console.WriteLine("3 - Concluir Tarefa");
+    Console.WriteLine("4 - Remover Tarefa");
+    Console.WriteLine("0 - Sair");
+    LayoutWrite.Amarelo("Escolha uma opção: ");
+    if(!int.TryParse(Console.ReadLine(), out escolha)){
+        LayoutWriteLine.Vermelho("Insira um valor válido! Digite para continuar...");
+        Console.ReadKey();
+        Console.Clear();
+    }else{
+        switch(escolha){
+            case 1:
+                Console.Clear();
 
-LayoutGerenciador.ExibirCabecalho("gerenciador de tarefas", true);
+            break;
+        }
+    }
+} while (escolha != 0);
