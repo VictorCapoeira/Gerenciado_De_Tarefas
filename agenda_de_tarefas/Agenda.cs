@@ -28,7 +28,7 @@ namespace Agenda
         }
         public void ListarTarefas(){
             if(tarefas.Count == 0)
-                LayoutWrite.Vermelho("\tNão há tarefas!");
+                LayoutWriteLine.Vermelho("\tNão há tarefas!");
             else{
                 LayoutWriteLine.Amarelo("\n\tLista de Tarefas: ");
                 foreach( var tarefa in tarefas){
@@ -37,7 +37,7 @@ namespace Agenda
             }
         }
         public void ConcluirTarefa(){
-            LayoutWrite.Amarelo("\tInsira o ID: ");
+            LayoutWrite.Amarelo("\n\tInsira o ID: ");
             int i = int.Parse(Console.ReadLine());
             Tarefa tarefa = tarefas.Find(t => t.Id == i);
             if(tarefa != null){
@@ -49,7 +49,7 @@ namespace Agenda
                 LayoutWrite.Vermelho("\tTarefa não encontrada!");
         }
         public void RemoverTarefa(){
-            LayoutWrite.Amarelo("\tInsira o ID: ");
+            LayoutWrite.Amarelo("\n\tInsira o ID: ");
             int i = int.Parse(Console.ReadLine());
             Tarefa tarefa = tarefas.Find(t => t.Id == i);
             if(tarefa != null){
