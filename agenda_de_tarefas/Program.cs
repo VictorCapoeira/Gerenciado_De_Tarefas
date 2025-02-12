@@ -33,6 +33,11 @@ do
                 tarefas.ListarTarefas();
                 tarefas.ConcluirTarefa();
             break;
+            case 4:
+                Console.Clear();
+                tarefas.ListarTarefas();
+                tarefas.RemoverTarefa();
+            break;
 
         }
     }
