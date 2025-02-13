@@ -110,6 +110,11 @@ namespace Agenda
             if(File.Exists(arquivo)){
                 File.Delete(arquivo);
             }
+            using (StreamWriter sw = new StreamWriter(arquivo)){
+                foreach(var tarefa in tarefas){
+                    sw.WriteLine($"\t[{(tarefa.Status ? "X" : " ")}] ID: {tarefa.Id.ToString()} - {tarefa.Nome}");
+                }
+            }
         }
     }
 }
