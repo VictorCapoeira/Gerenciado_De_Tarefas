@@ -3,7 +3,7 @@ namespace Layout
 {
     public class LayoutGerenciador
     {
-        public static void ExibirCabecalho(string titulo, Boolean estado = false)
+        public static void ExibirCabecalho(string titulo, Boolean maiusculo = false)
         {
                 int largura = Console.WindowWidth;
                 char[] letraMais = titulo.ToCharArray();
@@ -11,7 +11,7 @@ namespace Layout
                 string tituloMais = new string(letraMais);
                 
                 string linhaSuperior = $"╔{new string('═', titulo.Length + 2)}╗";
-                string linhaMeio = $"║ {(estado ? titulo.ToUpper() : tituloMais )} ║";
+                string linhaMeio = $"║ {(maiusculo ? titulo.ToUpper() : tituloMais )} ║";
                 string linhaInferior = $"╚{new string('═', titulo.Length + 2)}╝";
 
                 
