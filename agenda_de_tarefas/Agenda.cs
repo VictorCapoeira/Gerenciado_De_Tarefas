@@ -19,6 +19,7 @@ namespace Agenda
         private List<Tarefa> tarefas = new List<Tarefa>();
         private int IdCount = 1;
         public void AdicionarTarefa(){
+            
             LayoutWrite.Amarelo("\n\tNome da tarefa: ");
             string nome = Console.ReadLine();
             tarefas.Add(new Tarefa(IdCount, nome));
