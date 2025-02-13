@@ -104,5 +104,9 @@ namespace Agenda
             else
                 LayoutWrite.Vermelho("\tTarefa não encontrada!");
         }
+        public void SalvarTarefas(){
+            string data_Atual = DateTime.Now.ToString("dd-MM-yyyy");
+            string arquivo = $"tarefas_{data_Atual}.txt";
+        }
     }
 }
