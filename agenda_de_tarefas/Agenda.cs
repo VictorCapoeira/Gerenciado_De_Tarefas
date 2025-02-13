@@ -115,6 +115,7 @@ namespace Agenda
                     sw.WriteLine($"\t[{(tarefa.Status ? "X" : " ")}] ID: {tarefa.Id.ToString()} - {tarefa.Nome}");
                 }
             }
+            LayoutWriteLine.Verde("Tarefas salvas!");
         }
     }
 }
