@@ -1,8 +1,11 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using System.Text;
 using Agenda;
 using Layout;
 using Layout_console;
 Console.Clear();
+Console.OutputEncoding = Encoding.UTF8;
+Console.InputEncoding = Encoding.UTF8;
 
 GerenciarTarefas tarefas = new GerenciarTarefas();
 int escolha = 0;
