@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Text;
 using Layout_console;
 namespace Agenda
 {
@@ -19,8 +20,39 @@ namespace Agenda
         private List<Tarefa> tarefas = new List<Tarefa>();
         private int IdCount = 1;
         public void AdicionarTarefa(){
-            
+            static string LerEntradaComBackspace()
+    {
+        StringBuilder input = new StringBuilder();
+        while (true)
+        {
+            // Captura a tecla pressionada
+            var key = Console.ReadKey(intercept: true);
+
+            // Se pressionar Enter, finaliza a captura de entrada
+            if (key.Key == ConsoleKey.Enter)
+            {
+                break;
+            }
+
+            // Se pressionar Backspace, apaga o último caractere
+            if (key.Key == ConsoleKey.Backspace && input.Length > 0)
+            {
+                input.Remove(input.Length - 1, 1);
+                Console.Write("\b \b"); // Apaga o caractere na tela
+            }
+            else
+            {
+                // Adiciona o caractere ao texto
+                input.Append(key.KeyChar);
+                Console.Write(key.KeyChar); // Exibe o caractere digitado
+            }
+        }
+
+        return input.ToString();
+    }
             LayoutWrite.Amarelo("\n\tNome da tarefa: ");
+
+
             string nome = Console.ReadLine();
             tarefas.Add(new Tarefa(IdCount, nome));
             LayoutWriteLine.Verde("\tTarefa adicionada!");
