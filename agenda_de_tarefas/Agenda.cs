@@ -107,6 +107,9 @@ namespace Agenda
         public void SalvarTarefas(){
             string data_Atual = DateTime.Now.ToString("dd-MM-yyyy");
             string arquivo = $"tarefas_{data_Atual}.txt";
+            if(File.Exists(arquivo)){
+                File.Delete(arquivo);
+            }
         }
     }
 }
