@@ -8,8 +8,9 @@ Console.OutputEncoding = Encoding.UTF8;
 Console.InputEncoding = Encoding.UTF8;
 
 GerenciarTarefas tarefas = new GerenciarTarefas();
-GerenciarTarefas tarefas_antigas = new GerenciarTarefas();
+GerenciarTarefasAntigas tarefas_antigas = new GerenciarTarefasAntigas();
 int escolha = 0;
+int escolha_antigo = 0;
 do
 {
 Return1:
@@ -59,9 +60,62 @@ Return1:
                 Console.Clear();
                 tarefas.SalvarTarefas();
                 break;
-             case 6:
+            case 6:
                 Console.Clear();
                 tarefas_antigas.ListarArquivosAntigas();
+                do
+                {
+                Return2:
+                    LayoutGerenciador.ExibirCabecalho("gerenciador de tarefas", true);
+                    Console.WriteLine("\t1 - Listar Tarefas Antigas");
+                    Console.WriteLine("\t2 - Concluir Tarefa Antigas");
+                    Console.WriteLine("\t3 - Remover Tarefa Antigas");
+                    Console.WriteLine("\t4 - Salvar Tarefa Antigass");
+                    Console.WriteLine("\t0 - Sair");
+                    LayoutWrite.Amarelo("\tEscolha uma opção: ");
+                    if (!int.TryParse(Console.ReadLine(), out escolha_antigo))
+                    {
+                        LayoutWriteLine.Vermelho("\tInsira um valor válido! Digite para continuar...");
+                        Console.ReadKey();
+                        Console.Clear();
+                        goto Return2;
+                    }
+                    else
+                    {
+                        switch (escolha_antigo)
+                        {
+                            case 1:
+                                Console.Clear();
+                                tarefas_antigas.ListarTarefasAntigas();
+                                break;
+                            case 2:
+                                Console.Clear();
+                                tarefas_antigas.ListarTarefasAntigas();
+                                tarefas_antigas.ConcluirTarefaAntigas();
+                                Console.Clear();
+                                tarefas_antigas.ListarTarefasAntigas();
+                                break;
+                            case 3:
+                                Console.Clear();
+                                tarefas_antigas.ListarTarefasAntigas();
+                                tarefas_antigas.RemoverTarefaAntigas();
+                                Console.Clear();
+                                tarefas_antigas.ListarTarefasAntigas();
+                                break;
+                            case 4:
+                                Console.Clear();
+                                tarefas_antigas.SalvarTarefasAntigas();
+                                break;
+                            case 0:
+                                Console.Clear();
+                                break;
+                            default:
+                                Console.Clear();
+                                LayoutWrite.Vermelho("\tAção inválida!");
+                                break;
+                        }
+                    }
+                } while (escolha_antigo != 0);
                 break;
             case 0:
                 Console.Clear();
