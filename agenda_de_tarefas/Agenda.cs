@@ -128,8 +128,10 @@ namespace Agenda
             string pastaTarefas = Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName, "tarefas");
             if(!Directory.Exists(pastaTarefas)){
                 LayoutWriteLine.Vermelho("\n\t O caminho do arquivo pode estar errado!");
+                LayoutWriteLine.Vermelho("\n\t Confira se a pasta 'tarefas' está na raiz da pasta do programa!");
                 return;
             }
+            string [] arquivos = Directory.GetFiles(pastaTarefas, "Tarefas*.txt");
             
         }
     }
