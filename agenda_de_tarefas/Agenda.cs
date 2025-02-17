@@ -126,6 +126,11 @@ namespace Agenda
         }
         public void ListarTarefasAntigas(){
             string pastaTarefas = Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName, "tarefas");
+            if(!Directory.Exists(pastaTarefas)){
+                LayoutWriteLine.Vermelho("\n\t O caminho do arquivo pode estar errado!");
+                return;
+            }
+            
         }
     }
 }
