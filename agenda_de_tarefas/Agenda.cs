@@ -203,5 +203,19 @@ namespace Agenda
             else
                 LayoutWrite.Vermelho("\tTarefa não encontrada!");
         }
+        public void RemoverTarefaAntigas()
+        {
+            LayoutWrite.Amarelo("\n\tInsira o ID: ");
+            int i = int.Parse(Console.ReadLine());
+            Tarefa tarefa = tarefasAntigas.Find(t => t.Id == i);
+            if (tarefa != null)
+            {
+                tarefasAntigas.Remove(tarefa);
+                LayoutWrite.Verde($"\tTarefa {tarefa.Id} removida! Digite para continuar...");
+                Console.ReadKey();
+            }
+            else
+                LayoutWrite.Vermelho("\tTarefa não encontrada!");
+        }
     }
 }
