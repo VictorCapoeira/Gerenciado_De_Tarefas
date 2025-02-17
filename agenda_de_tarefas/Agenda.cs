@@ -111,7 +111,7 @@ namespace Agenda
             string diretórioAplicativo = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName;
             string nomePasta = "tarefas";
             string caminhoPasta = Path.Combine(diretórioAplicativo, nomePasta);
-            string arquivo = Path.Combine("..\\Debug",caminhoPasta, $"Tarefas_{data_Atual}.txt");
+            string arquivo = Path.Combine("..\\Debug", caminhoPasta, $"Tarefas_{data_Atual}.txt");
             if (File.Exists(arquivo))
             {
                 File.Delete(arquivo);
@@ -125,34 +125,43 @@ namespace Agenda
             }
             LayoutWriteLine.Verde("\tTarefas salvas!");
         }
-        public void ListarArquivosAntigas(){
+    }
+    public class GerenciarTarefasAntigas
+    {
+        public void ListarArquivosAntigas()
+        {
             string pastaTarefas = Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName, "tarefas");
-            if(!Directory.Exists(pastaTarefas)){
+            if (!Directory.Exists(pastaTarefas))
+            {
                 LayoutWriteLine.Vermelho("\n\t O caminho do arquivo pode estar errado!");
                 LayoutWriteLine.Vermelho("\n\t Confira se a pasta 'tarefas' está na raiz da pasta do programa!");
                 return;
             }
-            string [] arquivos = Directory.GetFiles(pastaTarefas, "Tarefas*.txt");
-            if(arquivos.Length == 0){
+            string[] arquivos = Directory.GetFiles(pastaTarefas, "Tarefas*.txt");
+            if (arquivos.Length == 0)
+            {
                 LayoutWriteLine.Vermelho("\n\tNenhum arquivo de tarefas foi encontrado!");
                 return;
             }
 
             LayoutWriteLine.Amarelo("\n\t Arquivos de Tarefas passadas: ");
-            foreach(string tarefa in arquivos){
-                
+            foreach (string tarefa in arquivos)
+            {
+
                 string nomeArquivo = Path.GetFileNameWithoutExtension(tarefa);
-                string arquivoData = nomeArquivo.Replace("Tarefas_","");
+                string arquivoData = nomeArquivo.Replace("Tarefas_", "");
                 LayoutWriteLine.Verde("\t  " + arquivoData);
             }
-            
+
         }
-        public void ListarTarefasAntigas(){
+        public void ListarTarefasAntigas()
+        {
             string pastaTarefas = Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName, "tarefas");
-            string [] arquivos = Directory.GetFiles(pastaTarefas, "Tarefas*.txt");
+            string[] arquivos = Directory.GetFiles(pastaTarefas, "Tarefas*.txt");
             LayoutWriteLine.Amarelo("\n\tInsira a data que deseja listar (dia-mês-ano): ");
             String dataEscolhida = Console.ReadLine();
-            if(!arquivos.Contains(dataEscolhida)){
+            if (!arquivos.Contains(dataEscolhida))
+            {
                 LayoutWriteLine.Vermelho("\n\tDigite uma data listada!");
             }
 
