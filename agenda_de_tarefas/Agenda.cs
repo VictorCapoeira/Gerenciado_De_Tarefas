@@ -104,5 +104,25 @@ namespace Agenda
             else
                 LayoutWrite.Vermelho("\tTarefa não encontrada!");
         }
+        public void SalvarTarefas()
+        {
+            string data_Atual = DateTime.Now.ToString("dd-MM-yyyy");
+            string diretórioAplicativo = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName;
+            string nomePasta = "tarefas";
+            string caminhoPasta = Path.Combine(diretórioAplicativo, nomePasta);
+            string arquivo = Path.Combine("..\\Debug",caminhoPasta, $"Tarefas_{data_Atual}.txt");
+            if (File.Exists(arquivo))
+            {
+                File.Delete(arquivo);
+            }
+            using (StreamWriter sw = new StreamWriter(arquivo))
+            {
+                foreach (var tarefa in tarefas)
+                {
+                    sw.WriteLine($"\t[{(tarefa.Status ? "X" : " ")}] ID: {tarefa.Id.ToString()} - {tarefa.Nome}");
+                }
+            }
+            LayoutWriteLine.Verde("\tTarefas salvas!");
+        }
     }
 }

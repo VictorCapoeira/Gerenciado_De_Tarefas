@@ -17,6 +17,7 @@ Return1:
     Console.WriteLine("\t2 - Listar Tarefas");
     Console.WriteLine("\t3 - Concluir Tarefa");
     Console.WriteLine("\t4 - Remover Tarefa");
+    Console.WriteLine("\t5 - Salvar Tarefas");
     Console.WriteLine("\t0 - Sair");
     LayoutWrite.Amarelo("\tEscolha uma opção: ");
     if (!int.TryParse(Console.ReadLine(), out escolha))
@@ -51,6 +52,10 @@ Return1:
                 tarefas.RemoverTarefa();
                 Console.Clear();
                 tarefas.ListarTarefas();
+                break;
+            case 5:
+                Console.Clear();
+                tarefas.SalvarTarefas();
                 break;
             case 0:
                 Console.Clear();
