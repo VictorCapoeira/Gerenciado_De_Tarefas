@@ -3,8 +3,9 @@
   <ItemGroup>
     <ProjectReference Include="..\..\biblioteca_de_layout_console\layout_console\Layout_console.csproj" />
   </ItemGroup>
-
+  
   <PropertyGroup>
+    <OutputEncoding>utf-8</OutputEncoding>
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
