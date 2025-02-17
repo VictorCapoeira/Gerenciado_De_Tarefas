@@ -175,7 +175,7 @@ namespace Agenda
 
             }
         }
-        public void ListarTarefas()
+        public void ListarTarefasAntigas()
         {
             if (tarefasAntigas.Count == 0)
                 LayoutWriteLine.Vermelho("\tNão há tarefas!");
@@ -187,6 +187,21 @@ namespace Agenda
                     LayoutWriteLine.Cinza($"\t[{(tarefa.Status ? "X" : " ")}] ID: {tarefa.Id.ToString()} - {tarefa.Nome}");
                 }
             }
+        }
+        public void ConcluirTarefaAntigas()
+        {
+            LayoutWrite.Amarelo("\n\tInsira o ID: ");
+            int i = int.Parse(Console.ReadLine());
+            Tarefa tarefa = tarefasAntigas.Find(t => t.Id == i);
+            if (tarefa != null)
+            {
+                tarefa.Concluir();
+                LayoutWrite.Verde($"\tTarefa {tarefa.Id} Concluida! Digite para continuar...");
+                Console.ReadKey();
+
+            }
+            else
+                LayoutWrite.Vermelho("\tTarefa não encontrada!");
         }
     }
 }
