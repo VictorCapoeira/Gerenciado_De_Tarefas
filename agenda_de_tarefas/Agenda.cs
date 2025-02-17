@@ -128,6 +128,8 @@ namespace Agenda
     }
     public class GerenciarTarefasAntigas
     {
+        
+        private List<Tarefa> tarefasAntigas = new List<Tarefa>();
         public void ListarArquivosAntigas()
         {
             string pastaTarefas = Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName, "tarefas");
@@ -154,7 +156,7 @@ namespace Agenda
             }
 
         }
-        public void ListarTarefasAntigas()
+        public void CarregarTarefas()
         {
             string pastaTarefas = Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName, "tarefas");
             string[] arquivos = Directory.GetFiles(pastaTarefas, "Tarefas*.txt");
@@ -163,6 +165,11 @@ namespace Agenda
             if (!arquivos.Contains(dataEscolhida))
             {
                 LayoutWriteLine.Vermelho("\n\tDigite uma data listada!");
+            }
+            foreach(var tarefas in arquivos){
+                var partes_coletadas = tarefas.Split(new[] {" ID: "," - "}, StringSplitOptions.None);
+                tarefasAntigas.Add(new Tarefa(int.Parse(partes_coletadas[1].Trim()), partes_coletadas[2].Trim()));
+                
             }
 
         }
