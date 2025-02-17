@@ -138,7 +138,9 @@ namespace Agenda
             }
             LayoutWriteLine.Amarelo("\n\t Arquivos de Tarefas passadas: ");
             foreach(string tarefa in arquivos){
-                LayoutWriteLine.Verde(tarefa);
+                string nomeArquivo = Path.GetFileNameWithoutExtension(tarefa);
+                string arquivoData = nomeArquivo.Replace("Tarefas_","");
+                LayoutWriteLine.Verde(arquivoData);
             }
         }
     }
