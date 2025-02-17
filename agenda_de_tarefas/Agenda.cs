@@ -124,5 +124,22 @@ namespace Agenda
             }
             LayoutWriteLine.Verde("\tTarefas salvas!");
         }
+        public void ListarTarefasAntigas(){
+            string pastaTarefas = Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName, "tarefas");
+            if(!Directory.Exists(pastaTarefas)){
+                LayoutWriteLine.Vermelho("\n\t O caminho do arquivo pode estar errado!");
+                LayoutWriteLine.Vermelho("\n\t Confira se a pasta 'tarefas' está na raiz da pasta do programa!");
+                return;
+            }
+            string [] arquivos = Directory.GetFiles(pastaTarefas, "Tarefas*.txt");
+            if(arquivos.Length == 0){
+                LayoutWriteLine.Vermelho("\n\tNenhum arquivo de tarefas foi encontrado!");
+                return;
+            }
+            LayoutWriteLine.Amarelo("\n\t Arquivos de Tarefas passadas: ");
+            foreach(string tarefa in arquivos){
+                LayoutWriteLine.Verde(tarefa);
+            }
+        }
     }
 }
