@@ -175,5 +175,18 @@ namespace Agenda
 
             }
         }
+        public void ListarTarefas()
+        {
+            if (tarefasAntigas.Count == 0)
+                LayoutWriteLine.Vermelho("\tNão há tarefas!");
+            else
+            {
+                LayoutWriteLine.Amarelo("\n\tLista de Tarefas: ");
+                foreach (var tarefa in tarefasAntigas)
+                {
+                    LayoutWriteLine.Cinza($"\t[{(tarefa.Status ? "X" : " ")}] ID: {tarefa.Id.ToString()} - {tarefa.Nome}");
+                }
+            }
+        }
     }
 }
