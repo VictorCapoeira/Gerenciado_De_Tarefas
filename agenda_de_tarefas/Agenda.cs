@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using Layout_console;
 namespace Agenda
@@ -123,6 +124,38 @@ namespace Agenda
                 }
             }
             LayoutWriteLine.Verde("\tTarefas salvas!");
+        }
+        public void ListarArquivosAntigas(){
+            string pastaTarefas = Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName, "tarefas");
+            if(!Directory.Exists(pastaTarefas)){
+                LayoutWriteLine.Vermelho("\n\t O caminho do arquivo pode estar errado!");
+                LayoutWriteLine.Vermelho("\n\t Confira se a pasta 'tarefas' está na raiz da pasta do programa!");
+                return;
+            }
+            string [] arquivos = Directory.GetFiles(pastaTarefas, "Tarefas*.txt");
+            if(arquivos.Length == 0){
+                LayoutWriteLine.Vermelho("\n\tNenhum arquivo de tarefas foi encontrado!");
+                return;
+            }
+
+            LayoutWriteLine.Amarelo("\n\t Arquivos de Tarefas passadas: ");
+            foreach(string tarefa in arquivos){
+                
+                string nomeArquivo = Path.GetFileNameWithoutExtension(tarefa);
+                string arquivoData = nomeArquivo.Replace("Tarefas_","");
+                LayoutWriteLine.Verde("\t  " + arquivoData);
+            }
+            
+        }
+        public void ListarTarefasAntigas(){
+            string pastaTarefas = Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName, "tarefas");
+            string [] arquivos = Directory.GetFiles(pastaTarefas, "Tarefas*.txt");
+            LayoutWriteLine.Amarelo("\n\tInsira a data que deseja listar (dia-mês-ano): ");
+            String dataEscolhida = Console.ReadLine();
+            if(!arquivos.Contains(dataEscolhida)){
+                LayoutWriteLine.Vermelho("\n\tDigite uma data listada!");
+            }
+
         }
     }
 }
