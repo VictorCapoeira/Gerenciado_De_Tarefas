@@ -130,6 +130,7 @@ namespace Agenda
     {
 
         private List<Tarefa> tarefasAntigas = new List<Tarefa>();
+        public string data_antiga = "";
         public void ListarArquivosAntigas()
         {
             string pastaTarefas = Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName, "tarefas");
@@ -162,6 +163,7 @@ namespace Agenda
             string[] arquivos = Directory.GetFiles(pastaTarefas, "Tarefas*.txt");
             LayoutWriteLine.Amarelo("\n\tInsira a data que deseja listar (dia-mês-ano): ");
             String dataEscolhida = Console.ReadLine();
+            data_antiga = dataEscolhida;
             if (!arquivos.Contains(dataEscolhida))
             {
                 LayoutWriteLine.Vermelho("\n\tDigite uma data listada!");
@@ -216,6 +218,24 @@ namespace Agenda
             }
             else
                 LayoutWrite.Vermelho("\tTarefa não encontrada!");
+        }
+        public void SalvarTarefasAntigas()
+        {            string diretórioAplicativo = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName;
+            string nomePasta = "tarefas";
+            string caminhoPasta = Path.Combine(diretórioAplicativo, nomePasta);
+            string arquivo = Path.Combine("..\\Debug", caminhoPasta, $"Tarefas_{data_antiga}.txt");
+            if (File.Exists(arquivo))
+            {
+                File.Delete(arquivo);
+            }
+            using (StreamWriter sw = new StreamWriter(arquivo))
+            {
+                foreach (var tarefa in tarefasAntigas)
+                {
+                    sw.WriteLine($"\t[{(tarefa.Status ? "X" : " ")}] ID: {tarefa.Id.ToString()} - {tarefa.Nome}");
+                }
+            }
+            LayoutWriteLine.Verde("\tTarefas salvas!");
         }
     }
 }
