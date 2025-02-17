@@ -125,7 +125,7 @@ namespace Agenda
             LayoutWriteLine.Verde("\tTarefas salvas!");
         }
         public void ListarTarefasAntigas(){
-            
+            string pastaTarefas = Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName, "tarefas");
         }
     }
 }
