@@ -132,6 +132,10 @@ namespace Agenda
                 return;
             }
             string [] arquivos = Directory.GetFiles(pastaTarefas, "Tarefas*.txt");
+            if(arquivos.Length == 0){
+                LayoutWriteLine.Vermelho("Nenhum arquivo de tarefas foi encontrado!");
+                return;
+            }
             
         }
     }
