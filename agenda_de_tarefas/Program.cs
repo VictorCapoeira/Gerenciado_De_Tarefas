@@ -8,6 +8,7 @@ Console.OutputEncoding = Encoding.UTF8;
 Console.InputEncoding = Encoding.UTF8;
 
 GerenciarTarefas tarefas = new GerenciarTarefas();
+GerenciarTarefas tarefas_antigas = new GerenciarTarefas();
 int escolha = 0;
 do
 {
@@ -18,6 +19,7 @@ Return1:
     Console.WriteLine("\t3 - Concluir Tarefa");
     Console.WriteLine("\t4 - Remover Tarefa");
     Console.WriteLine("\t5 - Salvar Tarefas");
+    Console.WriteLine("\t6 - Tarefas antigas");
     Console.WriteLine("\t0 - Sair");
     LayoutWrite.Amarelo("\tEscolha uma opção: ");
     if (!int.TryParse(Console.ReadLine(), out escolha))
@@ -56,6 +58,10 @@ Return1:
             case 5:
                 Console.Clear();
                 tarefas.SalvarTarefas();
+                break;
+             case 6:
+                Console.Clear();
+                tarefas_antigas.ListarTarefasAntigas();
                 break;
             case 0:
                 Console.Clear();
