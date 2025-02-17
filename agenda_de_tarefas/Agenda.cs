@@ -150,6 +150,10 @@ namespace Agenda
         public void ListarTarefasAntigas(){
             string pastaTarefas = Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName, "tarefas");
             string [] arquivos = Directory.GetFiles(pastaTarefas, "Tarefas*.txt");
+            LayoutWriteLine.Amarelo("Insira a data que deseja listar (dia-mês-ano): ");
+            String dataEscolhida = Console.ReadLine();
+            
+
         }
     }
 }
