@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using Layout_console;
 namespace Agenda
@@ -124,7 +125,7 @@ namespace Agenda
             }
             LayoutWriteLine.Verde("\tTarefas salvas!");
         }
-        public void ListarTarefasAntigas(){
+        public void ListarArquivosAntigas(){
             string pastaTarefas = Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName, "tarefas");
             if(!Directory.Exists(pastaTarefas)){
                 LayoutWriteLine.Vermelho("\n\t O caminho do arquivo pode estar errado!");
@@ -136,6 +137,7 @@ namespace Agenda
                 LayoutWriteLine.Vermelho("\n\tNenhum arquivo de tarefas foi encontrado!");
                 return;
             }
+
             LayoutWriteLine.Amarelo("\n\t Arquivos de Tarefas passadas: ");
             foreach(string tarefa in arquivos){
                 
@@ -143,6 +145,11 @@ namespace Agenda
                 string arquivoData = nomeArquivo.Replace("Tarefas_","");
                 LayoutWriteLine.Verde("\t  " + arquivoData);
             }
+            
+        }
+        public void ListarTarefasAntigas(){
+            string pastaTarefas = Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName, "tarefas");
+            string [] arquivos = Directory.GetFiles(pastaTarefas, "Tarefas*.txt");
         }
     }
 }

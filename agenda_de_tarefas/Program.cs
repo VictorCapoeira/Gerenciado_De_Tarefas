@@ -61,7 +61,7 @@ Return1:
                 break;
              case 6:
                 Console.Clear();
-                tarefas_antigas.ListarTarefasAntigas();
+                tarefas_antigas.ListarArquivosAntigas();
                 break;
             case 0:
                 Console.Clear();
