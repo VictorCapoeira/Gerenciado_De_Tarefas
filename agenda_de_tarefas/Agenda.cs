@@ -140,7 +140,7 @@ namespace Agenda
             foreach(string tarefa in arquivos){
                 string nomeArquivo = Path.GetFileNameWithoutExtension(tarefa);
                 string arquivoData = nomeArquivo.Replace("Tarefas_","");
-                LayoutWriteLine.Verde(arquivoData);
+                LayoutWriteLine.Verde("\t  " + arquivoData);
             }
         }
     }
