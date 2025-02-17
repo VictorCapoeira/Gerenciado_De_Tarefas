@@ -13,7 +13,7 @@ Etapas implementadas
 - [x] Salvar tarefas em arquivos criados a parti do dia (ou seja, cada dia terá um arquivo de tarefas propio) 
 
 Backlog
- - [ ] FUnção para listar tarefas de outros dias
+ - [ ] Função para listar tarefas de outros dias
  - [ ] Função para concluir tarefas de outros dias
  - [ ] Função para remover tarefas de outros dias
  - [ ] Menu para acessar tarefas de outros dias
