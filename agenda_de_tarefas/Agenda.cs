@@ -166,13 +166,14 @@ namespace Agenda
             Console.WriteLine("Dataaaaa " + arquivos[0]);
             LayoutWriteLine.Amarelo("\n\tInsira a data que deseja listar (dia-mês-ano): ");
             String dataEscolhida = Console.ReadLine();
-            data_antiga = $"C:\\Users\\Alunos\\OneDrive\\Documentos\\Nada_Oculto_permance\\Git_clones\\Gerenciado_De_Tarefas\\agenda_de_tarefas\\tarefas\\Tarefas_{dataEscolhida}.txt";
-            if (!arquivos.Contains(data_antiga))
+            data_antiga =  dataEscolhida;
+            dataEscolhida = $"C:\\Users\\Alunos\\OneDrive\\Documentos\\Nada_Oculto_permance\\Git_clones\\Gerenciado_De_Tarefas\\agenda_de_tarefas\\tarefas\\Tarefas_{dataEscolhida}.txt";
+            if (!arquivos.Contains(dataEscolhida))
             {
                 LayoutWriteLine.Vermelho("\n\tDigite uma data listada!");
                 goto Return3;
             }
-            using (StreamReader arquivo_string = new StreamReader(data_antiga))
+            using (StreamReader arquivo_string = new StreamReader(dataEscolhida))
             {
                 String teste;
                 while ((teste = arquivo_string.ReadLine()) != null)
