@@ -161,23 +161,32 @@ namespace Agenda
         {
             string pastaTarefas = Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName, "tarefas");
             string[] arquivos = Directory.GetFiles(pastaTarefas, "Tarefas*.txt");
-            Return3:
+        Return3:
             ListarArquivosAntigas();
+            Console.WriteLine("Dataaaaa " + arquivos[0]);
             LayoutWriteLine.Amarelo("\n\tInsira a data que deseja listar (dia-mês-ano): ");
             String dataEscolhida = Console.ReadLine();
-            data_antiga = dataEscolhida;
+            data_antiga =  dataEscolhida;
+            dataEscolhida = $"C:\\Users\\Alunos\\OneDrive\\Documentos\\Nada_Oculto_permance\\Git_clones\\Gerenciado_De_Tarefas\\agenda_de_tarefas\\tarefas\\Tarefas_{dataEscolhida}.txt";
             if (!arquivos.Contains(dataEscolhida))
             {
                 LayoutWriteLine.Vermelho("\n\tDigite uma data listada!");
                 goto Return3;
             }
-            foreach (var tarefas in arquivos)
+            using (StreamReader arquivo_string = new StreamReader(dataEscolhida))
             {
-                var partes_coletadas = tarefas.Split(new[] { " ID: ", " - " }, StringSplitOptions.None);
-                tarefasAntigas.Add(new Tarefa(int.Parse(partes_coletadas[1].Trim()), partes_coletadas[2].Trim()));
-                Tarefa tarefa = tarefasAntigas.Find(t => t.Id == int.Parse(partes_coletadas[1].Trim()));
-                tarefa.Status = partes_coletadas[3] == "[ ]" ? false : true;
+                String teste;
+                while ((teste = arquivo_string.ReadLine()) != null)
+                {
+                    var partes_coletadas = teste.Split(new[] { " ID: ", " - " }, StringSplitOptions.None);
 
+                    Console.WriteLine(partes_coletadas[0].Trim());
+                    Console.WriteLine(partes_coletadas[1].Trim());
+                    Console.WriteLine(partes_coletadas[2].Trim());
+                    tarefasAntigas.Add(new Tarefa(int.Parse(partes_coletadas[1].Trim()), partes_coletadas[2].Trim()));
+                    Tarefa tarefa = tarefasAntigas.Find(t => t.Id == int.Parse(partes_coletadas[1].Trim()));
+                    tarefa.Status = partes_coletadas[0] == "[X]" ? true : false;
+                }
             }
         }
         public void ListarTarefasAntigas()
@@ -223,7 +232,8 @@ namespace Agenda
                 LayoutWrite.Vermelho("\tTarefa não encontrada!");
         }
         public void SalvarTarefasAntigas()
-        {            string diretórioAplicativo = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName;
+        {
+            string diretórioAplicativo = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName;
             string nomePasta = "tarefas";
             string caminhoPasta = Path.Combine(diretórioAplicativo, nomePasta);
             string arquivo = Path.Combine("..\\Debug", caminhoPasta, $"Tarefas_{data_antiga}.txt");
