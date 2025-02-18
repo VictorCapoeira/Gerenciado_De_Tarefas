@@ -161,12 +161,15 @@ namespace Agenda
         {
             string pastaTarefas = Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName, "tarefas");
             string[] arquivos = Directory.GetFiles(pastaTarefas, "Tarefas*.txt");
+            Return3:
+            ListarArquivosAntigas();
             LayoutWriteLine.Amarelo("\n\tInsira a data que deseja listar (dia-mês-ano): ");
             String dataEscolhida = Console.ReadLine();
             data_antiga = dataEscolhida;
             if (!arquivos.Contains(dataEscolhida))
             {
                 LayoutWriteLine.Vermelho("\n\tDigite uma data listada!");
+                goto Return3;
             }
             foreach (var tarefas in arquivos)
             {
