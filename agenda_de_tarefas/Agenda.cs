@@ -128,8 +128,9 @@ namespace Agenda
     }
     public class GerenciarTarefasAntigas
     {
-        
+
         private List<Tarefa> tarefasAntigas = new List<Tarefa>();
+        public string data_antiga = "";
         public void ListarArquivosAntigas()
         {
             string pastaTarefas = Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName, "tarefas");
@@ -160,18 +161,84 @@ namespace Agenda
         {
             string pastaTarefas = Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName, "tarefas");
             string[] arquivos = Directory.GetFiles(pastaTarefas, "Tarefas*.txt");
+            Return3:
+            ListarArquivosAntigas();
             LayoutWriteLine.Amarelo("\n\tInsira a data que deseja listar (dia-mês-ano): ");
             String dataEscolhida = Console.ReadLine();
+            data_antiga = dataEscolhida;
             if (!arquivos.Contains(dataEscolhida))
             {
                 LayoutWriteLine.Vermelho("\n\tDigite uma data listada!");
+                goto Return3;
             }
-            foreach(var tarefas in arquivos){
-                var partes_coletadas = tarefas.Split(new[] {" ID: "," - "}, StringSplitOptions.None);
+            foreach (var tarefas in arquivos)
+            {
+                var partes_coletadas = tarefas.Split(new[] { " ID: ", " - " }, StringSplitOptions.None);
                 tarefasAntigas.Add(new Tarefa(int.Parse(partes_coletadas[1].Trim()), partes_coletadas[2].Trim()));
-                
-            }
+                Tarefa tarefa = tarefasAntigas.Find(t => t.Id == int.Parse(partes_coletadas[1].Trim()));
+                tarefa.Status = partes_coletadas[3] == "[ ]" ? false : true;
 
+            }
+        }
+        public void ListarTarefasAntigas()
+        {
+            if (tarefasAntigas.Count == 0)
+                LayoutWriteLine.Vermelho("\tNão há tarefas!");
+            else
+            {
+                LayoutWriteLine.Amarelo("\n\tLista de Tarefas: ");
+                foreach (var tarefa in tarefasAntigas)
+                {
+                    LayoutWriteLine.Cinza($"\t[{(tarefa.Status ? "X" : " ")}] ID: {tarefa.Id.ToString()} - {tarefa.Nome}");
+                }
+            }
+        }
+        public void ConcluirTarefaAntigas()
+        {
+            LayoutWrite.Amarelo("\n\tInsira o ID: ");
+            int i = int.Parse(Console.ReadLine());
+            Tarefa tarefa = tarefasAntigas.Find(t => t.Id == i);
+            if (tarefa != null)
+            {
+                tarefa.Concluir();
+                LayoutWrite.Verde($"\tTarefa {tarefa.Id} Concluida! Digite para continuar...");
+                Console.ReadKey();
+
+            }
+            else
+                LayoutWrite.Vermelho("\tTarefa não encontrada!");
+        }
+        public void RemoverTarefaAntigas()
+        {
+            LayoutWrite.Amarelo("\n\tInsira o ID: ");
+            int i = int.Parse(Console.ReadLine());
+            Tarefa tarefa = tarefasAntigas.Find(t => t.Id == i);
+            if (tarefa != null)
+            {
+                tarefasAntigas.Remove(tarefa);
+                LayoutWrite.Verde($"\tTarefa {tarefa.Id} removida! Digite para continuar...");
+                Console.ReadKey();
+            }
+            else
+                LayoutWrite.Vermelho("\tTarefa não encontrada!");
+        }
+        public void SalvarTarefasAntigas()
+        {            string diretórioAplicativo = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName;
+            string nomePasta = "tarefas";
+            string caminhoPasta = Path.Combine(diretórioAplicativo, nomePasta);
+            string arquivo = Path.Combine("..\\Debug", caminhoPasta, $"Tarefas_{data_antiga}.txt");
+            if (File.Exists(arquivo))
+            {
+                File.Delete(arquivo);
+            }
+            using (StreamWriter sw = new StreamWriter(arquivo))
+            {
+                foreach (var tarefa in tarefasAntigas)
+                {
+                    sw.WriteLine($"\t[{(tarefa.Status ? "X" : " ")}] ID: {tarefa.Id.ToString()} - {tarefa.Nome}");
+                }
+            }
+            LayoutWriteLine.Verde("\tTarefas salvas!");
         }
     }
 }
