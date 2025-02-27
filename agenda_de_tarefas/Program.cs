@@ -8,7 +8,11 @@ Console.OutputEncoding = Encoding.UTF8;
 Console.InputEncoding = Encoding.UTF8;
 
 GerenciarTarefas tarefas = new GerenciarTarefas();
+
 GerenciarTarefasAntigas tarefas_antigas = new GerenciarTarefasAntigas();
+
+GerenciarTarefas tarefas_antigas = new GerenciarTarefas();
+
 int escolha = 0;
 int escolha_antigo = 0;
 do
@@ -60,6 +64,7 @@ Return1:
                 Console.Clear();
                 tarefas.SalvarTarefas();
                 break;
+
             case 6:
                 Console.Clear();
                 tarefas_antigas.CarregarTarefas();
@@ -117,6 +122,9 @@ Return1:
                         }
                     }
                 } while (escolha_antigo != 0);
+             case 6:
+                Console.Clear();
+                tarefas_antigas.ListarTarefasAntigas();
                 break;
             case 0:
                 Console.Clear();

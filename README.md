@@ -12,13 +12,14 @@ Etapas implementadas
 - [x] Estilizar aplicação (cores indicativas, e texto centralizados)
 - [x] Salvar tarefas em arquivos criados a parti do dia (ou seja, cada dia terá um arquivo de tarefas propio)
 - [x] Endereçar tarefas salvas para uma pasta na raiz da propia pasta do programa
-- [x] Configurar o uso do utf-8  
+- [x] Configurar o uso do utf-8
+- [x] Função para listar tarefas de outros dias
+- [x] Função para concluir tarefas de outros dias
+- [x] Função para remover tarefas de outros dias
+- [x] Menu para acessar tarefas de outros dias
 
 Backlog
- - [ ] Função para listar tarefas de outros dias
- - [ ] Função para concluir tarefas de outros dias
- - [ ] Função para remover tarefas de outros dias
- - [ ] Menu para acessar tarefas de outros dias
+
 
 
  

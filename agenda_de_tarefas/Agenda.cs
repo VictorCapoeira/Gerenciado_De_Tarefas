@@ -148,6 +148,7 @@ namespace Agenda
             }
 
             LayoutWriteLine.Amarelo("\n\t Arquivos de Tarefas passadas: ");
+
             foreach (string tarefa in arquivos)
             {
 
@@ -227,6 +228,12 @@ namespace Agenda
                 tarefasAntigas.Remove(tarefa);
                 LayoutWrite.Verde($"\tTarefa {tarefa.Id} removida! Digite para continuar...");
                 Console.ReadKey();
+
+            foreach(string tarefa in arquivos){
+                string nomeArquivo = Path.GetFileNameWithoutExtension(tarefa);
+                string arquivoData = nomeArquivo.Replace("Tarefas_","");
+                LayoutWriteLine.Verde(arquivoData);
+
             }
             else
                 LayoutWrite.Vermelho("\tTarefa não encontrada!");
